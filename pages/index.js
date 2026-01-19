@@ -1,3 +1,24 @@
+// THE IMPORT FUNCTION DOESNT SEEM TO WORK
+//import { initialTodos, validationConfig } from "../utils/constants";
+// import { initialTodos } from "../utils/constants";
+
+import { v4 as uuidv4 } from "https://jspm.dev/uuid";
+//import Todo from "../components/todo";
+import FormValidator from "../components/FormValidator";
+
+// manually imported function
+// class FormValidator {
+// constructor(settings, formEl) {
+//  this._inputSelector = settings._inputSelector;
+//  this._submitButtonSelector = settings._submitButtonSelector;
+//  this._errorClass = settings._errorClass;
+//  this._inputErrorClass = settings._inputErrorClass;
+// this._inactiveButtonClass = settings._inactiveButtonClass;
+//  this._formEl = formEl;
+//  }
+//}
+
+// manually imported function
 const initialTodos = [
   {
     id: "7cec7373-681b-49d9-b065-021d61a69d03",
@@ -19,6 +40,7 @@ const initialTodos = [
   },
 ];
 
+// manually imported function
 const validationConfig = {
   formSelector: ".popup__form",
   inputSelector: ".popup__input",
@@ -97,7 +119,8 @@ addTodoForm.addEventListener("submit", (evt) => {
   const date = new Date(dateInput);
   date.setMinutes(date.getMinutes() + date.getTimezoneOffset());
 
-  const values = { name, date };
+  const id = uuidv4();
+  const values = { name, date, id };
   const todo = generateTodo(values);
   todosList.append(todo);
   closeModal(addTodoPopup);
@@ -105,5 +128,9 @@ addTodoForm.addEventListener("submit", (evt) => {
 
 initialTodos.forEach((item) => {
   const todo = generateTodo(item);
+  console.log(todo);
   todosList.append(todo);
 });
+
+const newTodoValidator = new FormValidator(validationConfig, addTodoForm);
+newTodoValidator.enableValidation();
