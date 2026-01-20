@@ -27,13 +27,10 @@ class Todo {
       .querySelector(".todo")
       .cloneNode(true);
 
-    const todoNameEl = (this._todoElement =
-      this._todoElement.querySelector(".todo__name"));
+    const todoNameEl = this._todoElement.querySelector(".todo__name");
 
-    const todoDate = (this._todoElement =
-      this._todoElement.querySelector(".todo__date"));
-    const todoDeleteBtn = (this._todoElement =
-      this._todoElement.querySelector(".todo__delete-btn"));
+    const todoDate = this._todoElement.querySelector(".todo__date");
+    const todoDeleteBtn = this._todoElement.querySelector(".todo__delete-btn");
 
     todoNameEl.textContent = this._data.name;
 
