@@ -36,6 +36,11 @@ class Todo {
 
     todoNameEl.textContent = this._data.name;
 
+    if (this._data.date) {
+      const due = new Date(this._data.date);
+      todoDate.textContent = `Due: ${due.toLocaleDateString()}`;
+    }
+
     this._generateCheckboxEl();
     this._setEventListeners();
 
