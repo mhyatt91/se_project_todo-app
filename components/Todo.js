@@ -30,12 +30,19 @@ class Todo {
     this._todoLabel.setAttribute("for", `todo-${this._id}`);
   }
 
+  _getTemplate() {
+    document
+      .querySelector(this._selector)
+      .content.querySelector(".todo")
+      .cloneNode(true);
+  }
+
   _toggleCompletion = () => {
     this._completed = !this._completed;
   };
 
   getView() {
-    this._templateElement = document.querySelector("#todo-template");
+    this._templateElement = this._getTemplate();
     this._todoElement = this._templateElement.content
       .querySelector(".todo")
       .cloneNode(true);

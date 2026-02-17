@@ -10,7 +10,7 @@ import TodoCounter from "../components/TodoCounter.js";
 const addTodoButton = document.querySelector(".button_action_add");
 const addTodoPopupEl = document.querySelector("#add-todo-popup");
 const addTodoForm = addTodoPopupEl.querySelector(".popup__form");
-const addTodoCloseBtn = addTodoPopupEl.querySelector(".popup__close"); // ??
+// const addTodoCloseBtn = addTodoPopupEl.querySelector(".popup__close");
 const todosList = document.querySelector(".todos__list");
 
 const todoCounter = new TodoCounter(initialTodos, ".counter__text");
@@ -34,23 +34,25 @@ const generateTodo = (data) => {
 
 const renderTodo = (item) => {
   const el = generateTodo(item);
-  todosList.append(el);
+  // todosList.append(el);
+  section.addItem(el);
 };
 
+const handleFormSubmit = (data) => {
+  const name = data.name;
+  const dateInput = data.date;
+  const date = new Date(dateInput);
+  const id = v4();
+  const values = { name, date, id };
+  const todo = generateTodo(values);
+  section.addItem(todo);
+};
 const addTodoPopup = new PopupWithForm({
   popupSelector: "#add-todo-popup",
-  handleFormSubmit: (inputValues) => {
-    renderTodo(inputValues);
-    todoCounter.updateTotal(true);
-    addTodoPopup.close();
-  },
+  handleFormSubmit,
 });
 
 addTodoPopup.setEventListeners();
-
-const closeModal = (modal) => {
-  modal.classList.remove("popup_visible");
-};
 
 addTodoButton.addEventListener("click", () => {
   addTodoPopup.open();

@@ -28,8 +28,6 @@ class PopupWithForm extends Popup {
       this._inputValues = this._getInputValues();
       this._handleFormSubmit(this._inputValues);
     });
-
-    //this._handleFormSubmit(this._inputValues);
   }
 }
 export default PopupWithForm;
