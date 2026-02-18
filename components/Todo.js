@@ -31,7 +31,7 @@ class Todo {
   }
 
   _getTemplate() {
-    document
+    return document
       .querySelector(this._selector)
       .content.querySelector(".todo")
       .cloneNode(true);
@@ -42,10 +42,7 @@ class Todo {
   };
 
   getView() {
-    this._templateElement = this._getTemplate();
-    this._todoElement = this._templateElement.content
-      .querySelector(".todo")
-      .cloneNode(true);
+    this._todoElement = this._getTemplate();
 
     const todoNameEl = this._todoElement.querySelector(".todo__name");
 
