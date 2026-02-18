@@ -33,16 +33,14 @@ const generateTodo = (data) => {
 
 const renderTodo = (item) => {
   const el = generateTodo(item);
-  // todosList.append(el);
+
   section.addItem(el);
 };
 
 const handleFormSubmit = (data) => {
-  const dateInput = data.date;
   const id = uuidv4();
-  const values = { name, id, completed: false };
-  const todo = renderTodo(values);
-  section.addItem(todo);
+  const values = { name: data.name, id, completed: false, date: data.date };
+  renderTodo(values);
   todoCounter.updateTotal(true);
   addTodoPopup.close();
 };

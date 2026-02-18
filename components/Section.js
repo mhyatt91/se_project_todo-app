@@ -6,6 +6,7 @@ class Section {
   }
 
   renderItems() {
+    console.log(1);
     this._items.forEach((item) => {
       this._renderer(item);
     });
@@ -13,6 +14,7 @@ class Section {
   //call renderer and pass the item as an argument
 
   addItem(element) {
+    console.log(2);
     this._container.append(element);
   }
 
