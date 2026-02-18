@@ -11,7 +11,6 @@ const addTodoButton = document.querySelector(".button_action_add");
 const addTodoPopupEl = document.querySelector("#add-todo-popup");
 const addTodoForm = addTodoPopupEl.querySelector(".popup__form");
 // const addTodoCloseBtn = addTodoPopupEl.querySelector(".popup__close");
-const todosList = document.querySelector(".todos__list");
 
 const todoCounter = new TodoCounter(initialTodos, ".counter__text");
 
@@ -39,13 +38,13 @@ const renderTodo = (item) => {
 };
 
 const handleFormSubmit = (data) => {
-  const name = data.name;
   const dateInput = data.date;
-  const date = new Date(dateInput);
-  const id = v4();
-  const values = { name, date, id };
-  const todo = generateTodo(values);
+  const id = uuidv4();
+  const values = { name, id, completed: false };
+  const todo = renderTodo(values);
   section.addItem(todo);
+  todoCounter.updateTotal(true);
+  addTodoPopup.close();
 };
 const addTodoPopup = new PopupWithForm({
   popupSelector: "#add-todo-popup",
