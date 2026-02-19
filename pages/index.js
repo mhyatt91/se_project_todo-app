@@ -38,8 +38,16 @@ const renderTodo = (item) => {
 };
 
 const handleFormSubmit = (data) => {
+  const name = data.name;
+
+  const dateInput = data.date;
   const id = uuidv4();
-  const values = { name: data.name, id, completed: false, date: data.date };
+  const values = { name, id, completed: false };
+
+  if (dateInput) {
+    values.date = new Date(dateInput);
+  }
+
   renderTodo(values);
   todoCounter.updateTotal(true);
   addTodoPopup.close();
